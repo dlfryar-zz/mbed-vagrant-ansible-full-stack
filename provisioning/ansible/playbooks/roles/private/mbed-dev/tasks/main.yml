@@ -18,9 +18,6 @@
 - name: mbed Dev | Creates a {{ mbed_source_dir }} directory for firmware
   file: path={{ mbed_source_dir }} state=directory
 
-- name: mbed Dev | add github to our known_hosts
-  shell: ssh-keyscan -H github.com > .ssh/known_hosts
-
 - name: mbed Dev | Fetch the source code to build our mbed-os project
   git:
     repo: "{{ mbed_repo_url }}"
