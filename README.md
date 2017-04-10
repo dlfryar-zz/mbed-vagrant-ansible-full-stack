@@ -1,37 +1,41 @@
-=== Step #
+### Install Vagrant
 
-Install Vagrant https://vagrantup.com
+    https://vagrantup.com
 
-=== Step #
+### Install VirtualBox
 
-Install VirtualBox https://www.virtualbox.org/
+    https://www.virtualbox.org/
 
-=== Step #
-
-Clone this repo
+### Clone this repo
     git clone https://github.com/ARMmbed/blah
 
-=== Step #
+### Create your ARM mbed Cloud credential files
 
-Edit vagrant.env and add your ARM mbed Cloud credentials
+    1) ~/.mbedcloud
+    2) ~/Downloads/identity_dev_security.c
+    3) ~/.netrc
 
-=== Step #
+    .mbedcloud - https://portal.mbedcloud.com/access/keys
+        MBED_CLOUD_API_KEY="my_api_key_from_mbedcloud_dashboard"
 
-Copy identity_dev_security.c which you obtained from
-https://portal.mbedcloud.com/Developer tools/Certificate
-to this directory
+    identity_dev_security.c
+        https://github.com/ARMmbed/mbed-cloud-client-example/blob/master/README.md#client-credentials
+        Follow the instructions here to generate an identity_dev_security.c and place it in your
+        ~/Downloads folder Copy identity_dev_security.c which you obtained from
+        https://portal.mbedcloud.com/Developer tools/Certificate
 
-=== Step #
 
-Start up the environment
-   vagrant up
+    .netrc - this is needed to access private repos on GitHub
+        machine github.com
+        login your_username_here
+        password your_password_here
 
-=== Step #
 
-Connect a FRDM-K64F https://developer.mbed.org/platforms/FRDM-K64F/
-board to your USB port
+### Start up the environment
+   
+    vagrant up
 
-=== Step #
+### Connect a FRDM-K64F https://developer.mbed.org/platforms/FRDM-K64F/ board to your USB port
 
 Connect the Ethernet port on the FRDM-K64F to your switch or router.
 
@@ -39,22 +43,20 @@ If you are behind a NAT'ed device then you must open the CoAP ports
 on your router in order for this to work.
 
 Virtual Servers / Port Forwarding
-|-------------|--------------|------|--------------------|------------|
-| Description | Inbound Port | Type | Private IP Address | Local Port |
-|-------------|--------------|------|--------------------|------------|
-|  FRDM-K64F  |  5683-5684   | Both |    192.168.0.18    | 5683-5684  |
-|-------------|--------------|------|--------------------|------------|
 
-=== Step #
+| Description | Inbound Port | Type | Private IP Address | Local Port |
+| ----------- | ------------ | ---- | ------------------ | ---------- |
+|  FRDM-K64F  |  5683-5684   | Both |    192.168.0.18    | 5683-5684  |
+
+
+### Flash the firmware
 
 Copy the firmware binary that was built to the FRDM-K64F board in order
 to flash the image.
+
     cp Source/mbed-os-example-client/BUILD/blah /mnt/MBED
 
-=== Step #
-
-Connect to the serial port on the FRDM-K64F to reset after flashing and
-to watch connection details.
+### Connect to the serial port on the FRDM-K64F to reset after flashing and to watch connection details.
 
     sudo minicom -D /dev/ttyACM0 -b 115200
 
@@ -64,7 +66,7 @@ above.
 
 Now watch for connection messages once the board comes back up
 
-=== Step #
+### Test it out!
 
 Point your browser to http://localhost:8000
 
@@ -89,7 +91,8 @@ FRDM-K64F from the browser.
 
 FRDM-K4F --> CoAP --> mbed Cloud
 
-=== Step #
+### Tear Down
 
-When you're all done tear the sucker down
+When you're all done tear it down
+
     vagrant destroy -f
