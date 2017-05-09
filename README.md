@@ -18,10 +18,10 @@
     .mbedcloud - https://portal.mbedcloud.com/access/keys
         MBED_CLOUD_API_KEY="my_api_key_from_mbedcloud_dashboard"
 
-    identity_dev_security.c
+    mbed_cloud_dev_credentials.c
         https://github.com/ARMmbed/mbed-cloud-client-example/blob/master/README.md#client-credentials
-        Follow the instructions here to generate an identity_dev_security.c and place it in your
-        ~/Downloads folder Copy identity_dev_security.c which you obtained from
+        Follow the instructions here to generate an production/mbed_cloud_dev_credentials.c and place it in your
+        ~/Downloads folder Copy production/mbed_cloud_dev_credentials.c which you obtained from
         https://portal.mbedcloud.com/Developer tools/Certificate
 
 
